@@ -16,7 +16,7 @@ main (){
 	
 	preencheVetor(Vetor, 20);
 	
-	imprimeVetor(Vetor,2000);
+	imprimeVetor(Vetor,20);
 	
 	printf("\n\n");
 	

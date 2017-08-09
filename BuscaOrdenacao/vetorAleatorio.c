@@ -7,11 +7,11 @@ void preencheVetor(int V[], int tam);
 void imprimeVetor(int V[], int tam);
 
 int main (){
-	int Aleatorio[100];
+	int Aleatorio[10000];
 	
-	preencheVetor(Aleatorio, 100);
+	preencheVetor(Aleatorio, 10000);
 	
-	imprimeVetor(Aleatorio, 100);
+	imprimeVetor(Aleatorio, 10000);
 	
 	system("pause");
 	
