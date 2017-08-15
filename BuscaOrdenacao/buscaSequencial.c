@@ -9,14 +9,18 @@ void imprimeVetor(int V[], int tam);
 
 main (){
 	int tam, i, posicao, busca;
-	int Vetor[20];
+	int *Vetor;
 	//Variáveis para medir o tempo
 	clock_t t_inicio, t_final;
-	float tempo;
+	double tempo;
 	
-	preencheVetor(Vetor, 20);
 	
-	imprimeVetor(Vetor,20);
+	Vetor = (int*) malloc (1000000*sizeof(int));
+	
+	preencheVetor(Vetor, 1000000);
+	
+	
+	//imprimeVetor(Vetor,100000);
 	
 	printf("\n\n");
 	
@@ -24,7 +28,7 @@ main (){
 	scanf("%d", &busca);
 	
 	t_inicio = clock();
-	posicao = buscaSequencial(Vetor, 20, busca);
+	posicao = buscaSequencial(Vetor, 1000000, busca);
 	t_final = clock();
 	
 	if(posicao == -1)
@@ -32,8 +36,8 @@ main (){
 	else
 		printf("\nO valor foi encontrado na posicao %d\n\n", posicao);
 	
-	tempo = ((float)t_final - (float)t_inicio)/CLOCKS_PER_SEC;
-	printf("O tempo de ordenacao foi de %f segundos\n\n", tempo);
+	tempo = ((double)t_final - (double)t_inicio)/CLOCKS_PER_SEC;
+	printf("O tempo de ordenacao foi de %e segundos\n\n", tempo);
 	
 }
 
