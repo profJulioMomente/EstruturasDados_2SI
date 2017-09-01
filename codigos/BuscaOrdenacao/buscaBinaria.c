@@ -3,6 +3,7 @@
 #include<time.h>
 
 int buscaBinaria(int *V, int tam, int busca);
+int buscaBinariaRecursiva(int V[], int Inicio, int Fim, int Busca);
 
 main (){
 	int tam, i, posicao, busca;
@@ -20,7 +21,7 @@ main (){
 	scanf("%d", &busca);
 	
 	t_inicio = clock();
-	posicao = buscaBinaria(Vetor, 20, busca);
+	posicao = buscaBinariaRecursiva(Vetor, 0, 19, busca);
 	t_final = clock();
 		
 	if(posicao == -1)
@@ -49,4 +50,20 @@ int buscaBinaria(int *V, int tam, int busca){
 	} while(lInf <= lSup);
 	
 	return -1;
+}
+
+int buscaBinariaRecursiva(int V[], int Inicio, int Fim, int Busca){
+	int Meio;
+	if(Inicio <= Fim) {
+		Meio = (Inicio + Fim)/2;
+		if(V[Meio] == Busca){
+			return Meio;
+		} else if (V[Meio] < Busca){
+			return buscaBinariaRecursiva(V, Meio+1, Fim, Busca);
+		} else {
+			return buscaBinariaRecursiva(V, Inicio, Meio-1, Busca);
+		}
+	} else {
+		return -1;	
+	}
 }
