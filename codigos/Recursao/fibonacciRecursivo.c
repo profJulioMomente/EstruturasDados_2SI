@@ -3,6 +3,8 @@
 
 int fib(int n);
 
+int cont = 0;
+
 main() {
 	int valor, fibonacci;
 	
@@ -13,12 +15,15 @@ main() {
 	
 	printf("Fibonacci(%d) = %d\n\n", valor, fibonacci);
 	
+	printf("foram utilizadas %d chamadas\n", cont);
+	
 	system("pause");
 	
 }
 
 
 int fib(int n){
+	cont++;
 	if(n==0)
 		return 0;
 	else if (n==1)
