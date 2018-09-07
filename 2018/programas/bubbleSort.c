@@ -7,10 +7,11 @@ void preencheVetor(int V[], int tam, int max);
 void imprimeVetor(int V[], int tam);
 void bubbleSort(int V[], int tam);
 void troca(int *A, int *B);
+int buscaBinariaRecursiva(int V[], int inicio, int fim, int busca);
 
 int main (){
 	int *Aleatorio;
-	int tam, max;
+	int tam, max, busca,pos;
 	
 	printf("Informe o tamanho do vetor: ");
 	scanf("%d", &tam);
@@ -22,14 +23,24 @@ int main (){
 	preencheVetor(Aleatorio, tam ,max);
 	
 	printf("Desordenado\n");
-	//imprimeVetor(Aleatorio, tam);
+	imprimeVetor(Aleatorio, tam);
 	system("pause");
 	
 	bubbleSort(Aleatorio, tam);
 	
 	system("pause");
 	printf("Ordenado\n");
-	//imprimeVetor(Aleatorio, tam);
+	imprimeVetor(Aleatorio, tam);
+	
+	printf("Informe o valor a ser pesquisado: ");
+	scanf("%d", &busca);
+	pos = buscaBinariaRecursiva(Aleatorio,0,tam-1,busca);
+	if(pos!=-1){
+		printf("Valor encontrado na posicao %d\n",pos);
+	} else {
+		printf("Valor nao encontrado\n");
+	}
+	system("pause");
 	
 }
 
@@ -74,4 +85,35 @@ void troca(int *A, int *B){
 	aux = *A;
 	*A = *B;
 	*B = aux;
+}
+
+int buscaBinariaRecursiva(int V[], int inicio, int fim, int busca){
+	int meio;
+	
+	if(inicio > fim) {
+		return -1;
+	} else {
+		meio = (inicio + fim)/2;
+		if (V[meio] == busca){
+			return meio;
+		} else if(V[meio] > busca){
+			return buscaBinariaRecursiva(V, inicio, meio-1, busca);
+		} else {
+			return buscaBinariaRecursiva(V, meio+1, fim, busca);
+		}
+	}
+}
+
+int maior(int V[], int inicio, int fim){
+	int m;
+	if(inicio == fim){
+		return V[inicio];
+	} else {
+		m = maior(V,inicio, fim-1);
+		if(m>V[fim]){
+			return m;
+		} else {
+			return V[fim];
+		}
+	}
 }
